@@ -19,3 +19,9 @@ Set the website in the crawler under "start_urls" and then run the script via
 ./crawler
 ```
 The resulting sitemap will then be stored in "sitemap.xml"
+
+## Afterthought
+I spent a lot of time getting the SiteSpider subclass to somehow dynamically accept the start_urls,
+which until now I was not able to achieve. Maybe it is not really designed to be used that way?
+A couple of stackoverflow questions describing the same problems may indicate that.
+Nevertheless we have a working version, although still without tests and quite a few possibilities to refactor.
