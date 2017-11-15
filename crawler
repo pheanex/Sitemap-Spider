@@ -12,7 +12,7 @@ urls = set()
 
 class SitemapScraper(CrawlSpider):
     name = 'SitemapSpider'
-    start_urls = ['https://rewe-digital.com']
+    start_urls = ['https://rewe-digital.com']  # ToDo: Make dynamic configurable
     allowed_domains = [urlparse(url).hostname for url in start_urls]
 
     rules = [
