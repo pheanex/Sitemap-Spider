@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from urllib.parse import urlparse
 
 from scrapy.crawler import CrawlerProcess
@@ -10,7 +10,7 @@ from scrapy.linkextractors import LinkExtractor
 urls = set()
 
 
-class SitemapScraper(CrawlSpider):
+class SitemapSpider(CrawlSpider):
     name = 'SitemapSpider'
     start_urls = ['https://rewe-digital.com']  # ToDo: Make dynamic configurable
     allowed_domains = [urlparse(url).hostname for url in start_urls]
@@ -29,7 +29,7 @@ process = CrawlerProcess({
     'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
 })
 
-process.crawl(SitemapScraper())
+process.crawl(SitemapSpider())
 process.start()
 
 with open("sitemap.xml", "w") as file:
