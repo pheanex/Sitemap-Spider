@@ -16,5 +16,5 @@ Therefore I am going to use a similar command-line interface and also output-for
 \*draft*
 
 ```
-./sitemap-crawler.py --url="https://www.website.com" --output="sitemap.xml"
+./crawl-sitemap.py --url="https://www.website.com" --output="sitemap.xml"
 ```
