@@ -1,4 +1,4 @@
-#Sitemap-Spider
+# Sitemap-Spider
 This is a small application as part of a coding challenge I received when I applied for a Python developer job to check my way of thinking and approach to this challenge.
 
 ## The task
