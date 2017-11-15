@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+from urllib.parse import urlparse
+
+from scrapy.crawler import CrawlerProcess
+from scrapy.spider import Rule
+from scrapy.spiders import CrawlSpider
+from scrapy.linkextractors import LinkExtractor
+
+
+urls = set()
+
+
+class SitemapScraper(CrawlSpider):
+    name = 'SitemapSpider'
+    start_urls = ['https://rewe-digital.com']
+    allowed_domains = [urlparse(url).hostname for url in start_urls]
+
+    rules = [
+        Rule(LinkExtractor(allow_domains=allowed_domains, unique=True, tags=['a', 'area', 'link']), callback='parse_item', follow=True)
+    ]
+
+    @staticmethod
+    def parse_item(response):
+        urls.add(response.url)
+        return response.request
+
+
+process = CrawlerProcess({
+    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
+})
+
+process.crawl(SitemapScraper())
+process.start()
+
+with open("sitemap.xml", "w") as file:
+    file.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+
+    for url in urls:
+        file.write("\t<url>\n"
+                   "\t\t<loc>\n"
+                   "\t\t\t{0}/\n"
+                   "\t\t</loc>\n"
+                   "\t</url>\n".format(url))
+
+    file.write('</urlset>')

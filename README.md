@@ -13,8 +13,9 @@ The most idiomatic approach under the given constraints to me was to make use of
 Therefore I am going to use a similar command-line interface and also output-format, since it is an official standard ([Sitemap XML protocol](http://www.sitemaps.org)). Usually I'd like to write tests up front, but due to the time constraint, Scrapys nature of being a bit [cumbersome](https://doc.scrapy.org/en/latest/topics/contracts.html) to write tests for and lack of quality/reliable test-data, I decided to add the tests afterwards if enough time left, just this once :-)
 
 ## Usage
-\*draft*
+Set the website in the crawler under "start_urls" and then run the script via
 
 ```
-./crawl-sitemap.py --url="https://www.website.com" --output="sitemap.xml"
+./crawler
 ```
+The resulting sitemap will then be stored in "sitemap.xml"

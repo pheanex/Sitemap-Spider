@@ -102,3 +102,6 @@ ENV/
 
 #Idea
 .idea
+
+#project-specific
+sitemap.xml
